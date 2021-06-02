@@ -91,8 +91,11 @@ extension ViewController: UISearchBarDelegate{
     func setupNavigationBar(){
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         
-        webSearchBar.placeholder = webView.title
+        overrideUserInterfaceStyle = .light
+        
+        webSearchBar.placeholder = "Enter URL"
         webSearchBar.isTranslucent = false
         webSearchBar.backgroundImage = UIImage()
     }
@@ -106,6 +109,17 @@ extension ViewController: UISearchBarDelegate{
         } else {
             print("URLError")
         }
+        
+        //        if webSearchBar.text!.hasPrefix("https://") || webSearchBar.text!.hasPrefix("http://"){
+        //            let myURL = URL(string: webSearchBar.text!)
+        //            let myRequest = URLRequest(url: myURL!)
+        //            webView.load(myRequest)
+        //        }else {
+        //            let correctedURL = "http://\(webSearchBar.text!)"
+        //            let myURL = URL(string: correctedURL)
+        //            let myRequest = URLRequest(url: myURL!)
+        //            webView.load(myRequest)
+        //        }
     }
 }
 
